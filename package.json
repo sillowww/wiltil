@@ -2,7 +2,13 @@
   "name": "willow-utils",
   "module": "src/index.ts",
   "type": "module",
+  "scripts": {
+    "fmt": "bunx biome format --write src/*",
+    "lint": "bunx biome lint src/*",
+    "check": "bunx biome check src/*"
+  },
   "devDependencies": {
+    "@biomejs/biome": "1.9.4",
     "@types/bun": "latest"
   },
   "peerDependencies": {
