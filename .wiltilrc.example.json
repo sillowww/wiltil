@@ -1,0 +1,9 @@
+{
+	"discord": {
+		"token": "",
+		"app_id": ""
+	},
+	"rbx": {
+		"token": "optional"
+	}
+}

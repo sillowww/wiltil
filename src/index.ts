@@ -1,7 +1,7 @@
 import { Client, Events, GatewayIntentBits } from "discord.js";
 
-import env from "./env.ts";
 import logger from "./utils/logging.ts";
+import cfg from "./validateConfig.ts";
 
 const client = new Client({
 	intents: (Object.values(GatewayIntentBits) as (string | number)[])
@@ -13,7 +13,7 @@ client.on(Events.ClientReady, async (client) => {
 	logger.info(`logged in as ${client.user?.tag}!`);
 });
 
-await client.login(env.data.discord.token);
+await client.login(cfg.data.discord.token);
 
 process.on("unhandledRejection", (error) => {
 	logger.error("unhandled promise rejection:", error);

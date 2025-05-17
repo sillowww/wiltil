@@ -1,4 +1,5 @@
-import fs from "fs";
+import fs from "node:fs";
+
 import { env } from "bun";
 import { z } from "zod";
 
@@ -16,8 +17,8 @@ const schema = z.object({
 	rbx: rbxSchema.optional(),
 });
 
-function validateEnv() {
-	const runtimeConfig = JSON.parse(fs.readFileSync(".wiltilsrc.json", "utf8"));
+function validateConfig() {
+	const runtimeConfig = JSON.parse(fs.readFileSync(".wiltilrc.json", "utf8"));
 	const conf = schema.safeParse(runtimeConfig);
 	if (conf.success) return conf.data;
 
@@ -27,4 +28,4 @@ function validateEnv() {
 	process.exit(1);
 }
 
-export default { data: validateEnv() };
+export default { data: validateConfig() };
