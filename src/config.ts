@@ -12,9 +12,18 @@ const rbxSchema = z.object({
 	token: z.string(),
 });
 
+const googleSchema = z.object({
+	sheets_id: z.string(),
+	credentials: z.object({
+		client_email: z.string(),
+		private_key: z.string(),
+	}),
+});
+
 const schema = z.object({
 	discord: discordSchema,
 	rbx: rbxSchema.optional(),
+	google: googleSchema.optional(),
 });
 
 function validateConfig() {
