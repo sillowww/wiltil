@@ -163,6 +163,10 @@ class Logger {
 		this.log(LogLevel.FATAL, message, ...args);
 	}
 
+	newLine(): void {
+		console.log();
+	}
+
 	child(scope: string | string[], options: LogOptions = {}): Logger {
 		const newScope = Array.isArray(scope)
 			? [...this.scope, ...scope]
