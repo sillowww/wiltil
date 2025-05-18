@@ -2,7 +2,6 @@ import {
 	type ChatInputCommandInteraction,
 	type Client,
 	SlashCommandBuilder,
-	escapeBulletedList,
 	inlineCode,
 } from "discord.js";
 import config from "../../config";
@@ -39,7 +38,6 @@ async function execute(
 	}
 
 	const url = `https://users.roblox.com/v1/users/search?keyword=${encodeURI(username)}`;
-
 	const response = await fetch(url, {
 		headers: {
 			"Content-Type": "application/json",

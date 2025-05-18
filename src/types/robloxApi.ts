@@ -56,16 +56,18 @@ export type UserSearchResponse =
 	| UserSearchBadResponse
 	| UserSearchRateLimitResponse;
 
+export interface UserSearchPlayer {
+	previousUsernames: string[];
+	hasVerifiedBadge: boolean;
+	id: number;
+	name: string;
+	displayName: string;
+}
+
 export interface UserSearchOkResponse {
 	previousPageCursor: string | null;
 	nextPageCursor: string | null;
-	data: Array<{
-		previousUsernames: string[];
-		hasVerifiedBadge: boolean;
-		id: number;
-		name: string;
-		displayName: string;
-	}>;
+	data: Array<UserSearchPlayer>;
 }
 
 export interface UserSearchBadResponse {

@@ -48,7 +48,16 @@ export default {
 		} else if (interaction.isModalSubmit()) {
 			const [commandName, ..._args] = interaction.customId.split(":");
 			const command = commands.get(commandName);
-			if (!command || !command.modalExecute) return;
+			if (!command || !command.modalExecute) {
+				logger.error(
+					`couldn't find the associated command for modal with customId ${interaction.customId}`,
+				);
+				return interaction.reply({
+					content: "there was an error while executing this modal!",
+					flags: ["Ephemeral"],
+				});
+			}
+
 			try {
 				await command.modalExecute(client, interaction);
 			} catch (error) {
