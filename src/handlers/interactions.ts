@@ -1,11 +1,6 @@
-import {
-	type ApplicationCommandData,
-	type Client,
-	Collection,
-	REST,
-	Routes,
-	type Snowflake,
-} from "discord.js";
+import type { ApplicationCommandData, Client, Snowflake } from "discord.js";
+import { Collection, REST, Routes } from "discord.js";
+
 import cfg from "../config.ts";
 import type { ICommand } from "../types.ts";
 import { Logger } from "../utils/logging.ts";

@@ -2,7 +2,6 @@ import {
 	ApplicationIntegrationType,
 	type ChatInputCommandInteraction,
 	type Client,
-	EmbedBuilder,
 	SlashCommandBuilder,
 } from "discord.js";
 

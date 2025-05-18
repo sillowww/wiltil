@@ -1,21 +1,21 @@
 {
-  "name": "willow-utils",
-  "module": "src/index.ts",
-  "type": "module",
-  "scripts": {
-    "fmt": "bunx biome format --write src/*",
-    "lint": "bunx biome lint src/*",
-    "check": "bunx biome check src/*"
-  },
-  "devDependencies": {
-    "@biomejs/biome": "1.9.4",
-    "@types/bun": "latest"
-  },
-  "peerDependencies": {
-    "typescript": "^5.0.0"
-  },
-  "dependencies": {
-    "discord.js": "^14.19.3",
-    "zod": "^3.24.4"
-  }
+	"name": "willow-utils",
+	"module": "src/index.ts",
+	"type": "module",
+	"scripts": {
+		"fmt": "bunx biome format --write src/*",
+		"lint": "bunx biome lint src/**/*",
+		"check": "bunx biome check src/**/*"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "1.9.4",
+		"@types/bun": "latest"
+	},
+	"peerDependencies": {
+		"typescript": "^5.0.0"
+	},
+	"dependencies": {
+		"discord.js": "^14.19.3",
+		"zod": "^3.24.4"
+	}
 }
