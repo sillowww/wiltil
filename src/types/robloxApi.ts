@@ -1,0 +1,85 @@
+type V2ErrorCode =
+	| "INVALID_ARGUMENT"
+	| "PERMISSION_DENIED"
+	| "NOT_FOUND"
+	| "ABORTED"
+	| "RESOURCE_EXHAUSTED"
+	| "CANCELLED"
+	| "INTERNAL"
+	| "NOT_IMPLEMENTED"
+	| "UNAVAILABLE";
+
+interface V2ErrorResponse {
+	code: V2ErrorCode;
+	message: string;
+	details: Array<Record<string, unknown>>;
+}
+
+// v1 resource err model
+export type V1ErrorCode =
+	| "INVALID_ARGUMENT"
+	| "INSUFFICIENT_SCOPE"
+	| "PERMISSION_DENIED"
+	| "NOT_FOUND"
+	| "ABORTED"
+	| "RESOURCE_EXHAUSTED"
+	| "CANCELLED"
+	| "INTERNAL"
+	| "NOT_IMPLEMENTED"
+	| "UNAVAILABLE";
+
+export interface V1ErrorResponse {
+	error: V1ErrorCode;
+	message: string;
+	errorDetails: Array<{
+		errorDetailType: string;
+		[key: string]: unknown;
+	}>;
+}
+
+// OrderedDataStores err model
+export interface OrderedDataStoresErrorResponse {
+	code: V1ErrorCode;
+	message: string;
+}
+
+// UserSearch api
+export interface UserSearchParams {
+	keyword: string;
+	sessionId?: string;
+	limit?: 10 | 25 | 50 | 100;
+	cursor?: string;
+}
+
+export type UserSearchResponse =
+	| UserSearchOkResponse
+	| UserSearchBadResponse
+	| UserSearchRateLimitResponse;
+
+export interface UserSearchOkResponse {
+	previousPageCursor: string | null;
+	nextPageCursor: string | null;
+	data: Array<{
+		previousUsernames: string[];
+		hasVerifiedBadge: boolean;
+		id: number;
+		name: string;
+		displayName: string;
+	}>;
+}
+
+export interface UserSearchBadResponse {
+	statusCode: 400;
+	error: "INVALID_ARGUMENT";
+	message: "The keyword was filtered." | "The keyword is too short.";
+}
+
+export interface UserSearchRateLimitResponse {
+	statusCode: 429;
+	error: "RESOURCE_EXHAUSTED";
+	message: "Too many requests.";
+}
+
+export type UserSearchError =
+	| UserSearchBadResponse
+	| UserSearchRateLimitResponse;
